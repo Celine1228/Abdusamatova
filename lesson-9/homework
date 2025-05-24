@@ -593,4 +593,40 @@ select
     customers.country
 from orders inner join customers on orders.customerid = customers.customerid
 where customers.country = 'germany' and orders.totalamount > 100;
+--question 22
+select * from products
+select*from orders
+select* from Payments
+select
+    payments.paymentid,
+    payments.amount,
+    orders.quantity,
+    products.price
+from payments
+inner join orders on payments.orderid = orders.orderid
+inner join products on orders.productid = products.productid
+where payments.amount <> orders.quantity * products.price;
+ --question 23
+ select*from students 
+ select*from courses
+ select*from enrollments
+
+select students.studentid, students.name
+from students
+left join enrollments on students.studentid = enrollments.studentid
+where enrollments.studentid is null
+--question 24 
+select Employees.EmployeeID, Employees.Name, Employees.DepartmentID, Employees.Salary
+from Employees
+inner join Employees as Managers
+on Employees.ManagerID = Managers.EmployeeID
+where Employees.Salary >= Managers.Salary;
+--question 25
+select*from customers
+select Customers.CustomerID, Customers.FirstName+'  '+LastName as fullname, Orders.OrderID
+from Orders
+inner join Customers on Orders.CustomerID = Customers.CustomerID
+left join Payments on Orders.OrderID = Payments.OrderID
+where Payments.PaymentID is null
+
 
